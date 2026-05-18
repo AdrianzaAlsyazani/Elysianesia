@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Peta Gagasan">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <header class="mb-8">
+      <div class="text-xs font-mono uppercase tracking-widest text-emerald-600 font-semibold mb-2">
+        // Visualisasi Ekosistem Pemikiran
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold text-slate-900">
+        Peta Hubungan Gagasan
+      </h1>
+    </header>
+
+    <div class="relative w-full h-[400px] bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-inner flex items-center justify-center">
+      
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-40"></div>
+      
+      <div class="absolute bg-slate-900 text-white font-mono px-4 py-2 rounded-xl border shadow-md font-bold z-10">
+        Solarpunk Lab
+      </div>
+
+      <div class="absolute top-16 left-16 bg-emerald-50 text-emerald-700 font-mono px-3 py-1.5 rounded-lg border border-emerald-200 text-sm">
+        Daulat Energi
+      </div>
+      
+      <div class="absolute top-16 right-16 bg-blue-50 text-blue-700 font-mono px-3 py-1.5 rounded-lg border border-blue-200 text-sm">
+        Ekonomi P2P
+      </div>
+
+      <div class="absolute bottom-16 left-16 bg-amber-50 text-amber-700 font-mono px-3 py-1.5 rounded-lg border border-amber-200 text-sm">
+        Tata Kelola Bioregional
+      </div>
+
+      <div class="absolute bottom-16 right-16 bg-teal-50 text-teal-700 font-mono px-3 py-1.5 rounded-lg border border-teal-200 text-sm">
+        Infrastruktur Terdesentralisasi
+      </div>
+
+    </div>
+  </main>
+</BaseLayout>

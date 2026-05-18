@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Ambil semua artikel esai yang sudah lolos validasi
+const semuaEsai = await getCollection('tulisan');
+
+// Urutkan artikel berdasarkan tanggal terbaru
+const esaiTerurut = semuaEsai.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Rumah Gagasan Masa Depan">
+  <header class="max-w-4xl mx-auto px-6 pt-20 pb-16 text-center">
+    <div class="text-xs font-mono uppercase tracking-widest text-solar-teal font-semibold mb-3">
+      Selamat Datang di Ruang Refleksi
+    </div>
+    <h1 class="text-4xl md:text-6xl font-serif font-bold text-slate-900 leading-tight mb-6">
+      Menjelajahi Gagasan & <br class="hidden md:inline"/>Sistem Masyarakat Alternatif
+    </h1>
+    <p class="text-lg md:text-xl text-slate-600 font-light max-w-2xl mx-auto leading-relaxed">
+      Sebuah kompilasi tulisan mendalam tentang masa depan yang ekologis, desentralistis, dan berdaulat. Melampaui batas imajinasi kapitalisme modern.
+    </p>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-12 border-t border-solar-text/10">
+    <h2 class="font-mono text-xs uppercase tracking-widest text-solar-text/60 mb-8 font-bold">
+      // Arsip Tulisan Mendalam ({semuaEsai.length})
+    </h2>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      {esaiTerurut.map((esai) => (
+        <article class="bg-white p-6 rounded-2xl border border-solar-text/5 shadow-sm hover:shadow-md hover:border-solar-teal/40 transition duration-300 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-mono uppercase text-solar-teal font-semibold">
+              {esai.data.category}
+            </span>
+            <h3 class="text-xl font-serif font-bold text-slate-900 mt-2 mb-3 hover:text-solar-teal transition">
+              <a href={`/esai/${esai.id}`}>
+                {esai.data.title}
+              </a>
+            </h3>
+            <p class="text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4">
+              {esai.data.description}
+            </p>
+          </div>
+          
+          <div class="flex items-center justify-between text-xs font-mono text-solar-text/50 pt-4 border-t border-slate-100">
+            <span>{esai.data.readingTime}</span>
+            <span>{esai.data.date.toLocaleDateString('id-ID', {year: 'numeric', month: 'short'})}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

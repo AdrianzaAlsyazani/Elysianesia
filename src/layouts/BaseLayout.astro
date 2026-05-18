@@ -1,0 +1,38 @@
+---
+import Navbar from '../components/Navbar.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  showProgress?: boolean;
+}
+
+const { title, description = "Gagasan masa depan & sistem masyarakat alternatif", showProgress = false } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | Solarpunk Lab</title>
+  <meta name="description" content={description} />
+  <!-- Google Fonts untuk Tipografi Premium -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-solar-bg text-solar-text antialiased selection:bg-solar-accent/30">
+  
+  <Navbar />
+  {showProgress && <ReadingProgress />}
+
+  <!-- Tempat di mana konten halaman spesifik akan dimasukkan -->
+  <slot />
+
+  <footer class="border-t border-solar-text/10 py-8 text-center text-xs font-mono text-solar-text/60 mt-20">
+    &copy; {new Date().getFullYear()} Adrianza. Dikembangkan secara terdesentralisasi.
+  </footer>
+</body>
+</html>

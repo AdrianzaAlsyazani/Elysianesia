@@ -1,0 +1,21 @@
+---
+const links = [
+  { text: 'Manifesto', url: '/manifesto' },
+  { text: 'Arsip Esai', url: '/' },          // DIUBAH: dari '/esai' ke '/'
+  { text: 'Peta Gagasan', url: '/peta-gagasan' } // DIUBAH: dari '/peta' ke '/peta-gagasan'
+];
+---
+];
+---
+<nav class="sticky top-0 z-50 backdrop-blur-md bg-solar-bg/80 border-b border-solar-text/10 px-6 py-4 flex justify-between items-center">
+  <a href="/" class="font-mono text-lg font-bold tracking-wider text-solar-text hover:opacity-80 transition">
+    SOLARPUNK // LAB
+  </a>
+  <div class="space-x-6 text-sm font-medium">
+    {links.map(link => (
+      <a href={link.url} class="text-solar-text/80 hover:text-solar-teal transition duration-200">
+        {link.text}
+      </a>
+    ))}
+  </div>
+</nav>

@@ -1,0 +1,23 @@
+---
+// Komponen murni UI, logika interaksi menggunakan vanilla JS di bawah
+---
+<div class="progress-container fixed top-[65px] left-0 w-full h-1 z-50 pointer-events-none">
+  <div id="progressBar" class="h-full bg-solar-teal w-0 transition-all duration-75 ease-out"></div>
+</div>
+
+<script>
+  const updateProgressBar = () => {
+    const progressBar = document.getElementById('progressBar');
+    if (!progressBar) return;
+    
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+    
+    progressBar.style.width = scrolled + '%';
+  };
+
+  window.addEventListener('scroll', updateProgressBar);
+  // Bersihkan event listener jika beralih halaman (Astro View Transitions)
+  document.addEventListener('astro:after-swap', () => window.addEventListener('scroll', updateProgressBar));
+</script>
