@@ -1,6 +1,7 @@
----
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL?.replace(/\/?$/, '/') || '/';
 
 // Ambil semua artikel esai yang sudah lolos validasi
 const semuaEsai = await getCollection('tulisan');
@@ -35,7 +36,7 @@ const esaiTerurut = semuaEsai.sort((a, b) => b.data.date.valueOf() - a.data.date
               {esai.data.category}
             </span>
             <h3 class="text-xl font-serif font-bold text-slate-900 mt-2 mb-3 hover:text-solar-teal transition">
-              <a href={`/esai/${esai.id}`}>
+              <a href={`${base}esai/${esai.id}`}>
                 {esai.data.title}
               </a>
             </h3>
